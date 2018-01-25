@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Net;
+using System.Text;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace HttpClientSample
+namespace Core
 {
+
     public class Welcome
     {
         [JsonProperty("BTC-INR")]
@@ -21,8 +23,7 @@ namespace HttpClientSample
         [JsonProperty("DASH-INR")]
         public Inr DASH { get; set; }
     }
-
-    public  class Inr
+    public class Inr
     {
         [JsonProperty("last")]
         public string Last { get; set; }
@@ -36,18 +37,37 @@ namespace HttpClientSample
     class Program
     {
 
-        static void Main(string[] args)
+        public static string tacker(int i)
         {
             var currencyRates = _download_serialized_json_data<Welcome>();
-            Console.WriteLine("How much bitcoin did you buy?");
-            
-            string a = currencyRates.BTC.Last;
+            switch (i)
+            {
+                case 1:
+                    string BTC = currencyRates.BTC.LowestAsk;
+                    return BTC;
+                   
 
-            Console.WriteLine(a);
-            Console.Read();
+                case 2:
+                    string BCH = currencyRates.BCH.LowestAsk;
+                    return BCH;
+
+                case 3:
+                    string LTC = currencyRates.LTC.LowestAsk;
+                    return LTC;
+
+                case 4:
+                    string DASH = currencyRates.DASH.LowestAsk;
+                    return DASH;
+
+                default:
+                    return null;
+            }
+
         }
+
         
-        private static T _download_serialized_json_data<T>()where T : new()
+
+        public static T _download_serialized_json_data<T>() where T : new()
         {
             using (var w = new WebClient())
             {
