@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using System;
 
 namespace CoinTracker
 {
@@ -13,29 +14,47 @@ namespace CoinTracker
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-            Button getabllbutton = FindViewById<Button>(Resource.Id.getallbutton);
-            TextView btc = FindViewById<TextView>(Resource.Id.btcview);
-            TextView bch = FindViewById<TextView>(Resource.Id.bchview);
-            TextView ltc = FindViewById<TextView>(Resource.Id.ltcview);
-            TextView dash = FindViewById<TextView>(Resource.Id.dashview);
 
+            Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner1);
+            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
 
+            var adapter = ArrayAdapter.CreateFromResource(
+                    this, Resource.Array.Currency_Array, Android.Resource.Layout.SimpleSpinnerItem);
 
-            getabllbutton.Click += (sender, e) =>
+            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spinner.Adapter = adapter;
+
+        }
+      
+        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            Spinner spinner = (Spinner)sender;
+
+            switch (spinner.GetItemIdAtPosition(e.Position))
             {
+                case 1:
+                    string btctoast = string.Format("Bitcoin is {0}", Core.Program.tacker(0));
+                    Toast.MakeText(this, btctoast, ToastLength.Long).Show();
+                    break;
+                case 2:
+                    string bchtoast = string.Format("Bitcoin Cash is {0}", Core.Program.tacker(1));
+                    Toast.MakeText(this, bchtoast, ToastLength.Long).Show();
+                    break;
+                case 3:
+                    string ltctoast = string.Format("Litecoin is {0}", Core.Program.tacker(2));
+                    Toast.MakeText(this, ltctoast, ToastLength.Long).Show();
+                    break;
+                case 4:
+                    string dashtoast = string.Format("Dash is {0}", Core.Program.tacker(3));
+                    Toast.MakeText(this, dashtoast, ToastLength.Long).Show();
+                    break;
+            }
 
-                string btcreturn = Core.Program.tacker(1);
-                btc.Text = btcreturn;
-                string bchreturn = Core.Program.tacker(2);
-                bch.Text = bchreturn;
-                string ltcreturn = Core.Program.tacker(3);
-                ltc.Text = ltcreturn;
-                string dashreturn = Core.Program.tacker(4);
-                dash.Text = dashreturn;
-            };
+        }
 
 
-       }
+
+
     }
 }
 
