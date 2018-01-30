@@ -8,11 +8,11 @@ namespace CoinTracker
     [Activity(Label = "CoinTracker", MainLauncher = true)]
     public class MainActivity : Activity
     {
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
             Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner1);
@@ -29,24 +29,40 @@ namespace CoinTracker
         private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             Spinner spinner = (Spinner)sender;
+            TextView currentprice = FindViewById<TextView>(Resource.Id.currentprice);
+            EditText quantity = FindViewById<EditText>(Resource.Id.quantity);
+            EditText price = FindViewById<EditText>(Resource.Id.price);
+            TextView marginview = FindViewById<TextView>(Resource.Id.marginview);
+
 
             switch (spinner.GetItemIdAtPosition(e.Position))
+
             {
                 case 1:
-                    string btctoast = string.Format("Bitcoin is {0}", Core.Program.tacker(0));
+                    
+                    string btctoast =Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(0)));
                     Toast.MakeText(this, btctoast, ToastLength.Long).Show();
+                    currentprice.Text = Core.Program.tacker(0);
+                    marginview.Text = btctoast;
                     break;
                 case 2:
-                    string bchtoast = string.Format("Bitcoin Cash is {0}", Core.Program.tacker(1));
+                    string bchtoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(1)));
                     Toast.MakeText(this, bchtoast, ToastLength.Long).Show();
+                    currentprice.Text = Core.Program.tacker(1);
+                    marginview.Text = bchtoast;
                     break;
                 case 3:
-                    string ltctoast = string.Format("Litecoin is {0}", Core.Program.tacker(2));
-                    Toast.MakeText(this, ltctoast, ToastLength.Long).Show();
+                    string ltctoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(2)));
+                     Toast.MakeText(this, ltctoast, ToastLength.Long).Show();
+                    currentprice.Text = Core.Program.tacker(2);
+                    marginview.Text = ltctoast;
+
                     break;
                 case 4:
-                    string dashtoast = string.Format("Dash is {0}", Core.Program.tacker(3));
-                    Toast.MakeText(this, dashtoast, ToastLength.Long).Show();
+                    string dashtoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(3)));
+                     Toast.MakeText(this, dashtoast, ToastLength.Long).Show();
+                    currentprice.Text = Core.Program.tacker(3);
+                    marginview.Text = dashtoast;
                     break;
             }
 

@@ -67,7 +67,19 @@ namespace Core
         }
 
       
+        public static float margin(string Bquantity, string Bprice, string CurrentPrice)
+        {
+            float FloatBprice = float.Parse(Bprice, CultureInfo.InvariantCulture.NumberFormat);
+            float FloatBquantity = float.Parse(Bquantity, CultureInfo.InvariantCulture.NumberFormat);
+            float FloatCurrentPrice = float.Parse(CurrentPrice, CultureInfo.InvariantCulture.NumberFormat);
+            float FloatBoughtPrice = FloatBprice / FloatBquantity;
 
+
+           
+            float Margin = (FloatCurrentPrice - FloatBoughtPrice) * FloatBquantity;
+
+            return Margin ;
+        }
         
 
         public static T _download_serialized_json_data<T>() where T : new()
