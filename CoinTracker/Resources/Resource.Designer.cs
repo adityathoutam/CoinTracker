@@ -32,7 +32,7 @@ namespace CoinTracker
 		{
 			
 			// aapt resource value: 0x7f040000
-			public const int Currency_Array = 2130968576;
+			public const int coin_array = 2130968576;
 			
 			static Array()
 			{
@@ -61,34 +61,31 @@ namespace CoinTracker
 		{
 			
 			// aapt resource value: 0x7f050003
-			public const int currentprice = 2131034115;
-			
-			// aapt resource value: 0x7f050009
-			public const int marginview = 2131034121;
-			
-			// aapt resource value: 0x7f050007
-			public const int price = 2131034119;
-			
-			// aapt resource value: 0x7f050005
-			public const int quantity = 2131034117;
-			
-			// aapt resource value: 0x7f050001
-			public const int spinner1 = 2131034113;
-			
-			// aapt resource value: 0x7f050000
-			public const int textView1 = 2131034112;
-			
-			// aapt resource value: 0x7f050002
-			public const int textView2 = 2131034114;
+			public const int bchtext = 2131034115;
 			
 			// aapt resource value: 0x7f050004
-			public const int textView4 = 2131034116;
+			public const int bchview = 2131034116;
 			
-			// aapt resource value: 0x7f050006
-			public const int textView5 = 2131034118;
+			// aapt resource value: 0x7f050001
+			public const int btctext = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public const int btcview = 2131034114;
+			
+			// aapt resource value: 0x7f050007
+			public const int dashtext = 2131034119;
 			
 			// aapt resource value: 0x7f050008
-			public const int textView6 = 2131034120;
+			public const int dashview = 2131034120;
+			
+			// aapt resource value: 0x7f050000
+			public const int getallbutton = 2131034112;
+			
+			// aapt resource value: 0x7f050005
+			public const int ltctext = 2131034117;
+			
+			// aapt resource value: 0x7f050006
+			public const int ltcview = 2131034118;
 			
 			static Id()
 			{
@@ -120,7 +117,10 @@ namespace CoinTracker
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int currency_prompt = 2130903040;
+			public const int app_name = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int coin_prompt = 2130903041;
 			
 			static String()
 			{

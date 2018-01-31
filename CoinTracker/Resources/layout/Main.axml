@@ -5,57 +5,55 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <TextView
-        android:text="@string/currency_prompt"
+    <Button
+        android:text="GET ALL RATES"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
-    <Spinner
-        android:prompt="@string/currency_prompt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner1" />
+        android:id="@+id/getallbutton"
+        android:layout_marginBottom="0.0dp"
+        android:layout_marginRight="0.0dp" />
     <TextView
-        android:text="Current Price of"
+        android:text="BTC"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2" />
+        android:id="@+id/btctext" />
     <TextView
-        android:text="Select Something Above"
+        android:text="Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/currentprice" />
+        android:id="@+id/btcview" />
     <TextView
-        android:text="How much quantity did you buy?"
+        android:text="BCH"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4" />
-    <EditText
-        android:inputType="numberDecimal"
+        android:id="@+id/bchtext" />
+    <TextView
+        android:text="Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/quantity" />
+        android:id="@+id/bchview" />
     <TextView
-        android:text="How much price did you pay?"
+        android:text="LTC"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5" />
-    <EditText
-        android:inputType="numberDecimal"
+        android:id="@+id/ltctext" />
+    <TextView
+        android:text="Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/price" />
+        android:id="@+id/ltcview" />
     <TextView
-        android:text="Margin is"
+        android:text="DASH"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView6" />
+        android:id="@+id/dashtext" />
     <TextView
+        android:text="Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/marginview" />
+        android:id="@+id/dashview" />
 </LinearLayout>

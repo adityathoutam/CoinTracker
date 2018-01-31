@@ -8,69 +8,34 @@ namespace CoinTracker
     [Activity(Label = "CoinTracker", MainLauncher = true)]
     public class MainActivity : Activity
     {
-        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
+            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+            Button getabllbutton = FindViewById<Button>(Resource.Id.getallbutton);
+            TextView btc = FindViewById<TextView>(Resource.Id.btcview);
+            TextView bch = FindViewById<TextView>(Resource.Id.bchview);
+            TextView ltc = FindViewById<TextView>(Resource.Id.ltcview);
+            TextView dash = FindViewById<TextView>(Resource.Id.dashview);
+            Spinner spin = FindViewById<Spinner>(Resource.Id.spinner1);
 
-            Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner1);
-            spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
-
-            var adapter = ArrayAdapter.CreateFromResource(
-                    this, Resource.Array.Currency_Array, Android.Resource.Layout.SimpleSpinnerItem);
-
-            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spinner.Adapter = adapter;
-
-        }
-      
-        private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            Spinner spinner = (Spinner)sender;
-            TextView currentprice = FindViewById<TextView>(Resource.Id.currentprice);
-            EditText quantity = FindViewById<EditText>(Resource.Id.quantity);
-            EditText price = FindViewById<EditText>(Resource.Id.price);
-            TextView marginview = FindViewById<TextView>(Resource.Id.marginview);
-
-
-            switch (spinner.GetItemIdAtPosition(e.Position))
-
+         
+            getabllbutton.Click += (sender, e) =>
             {
-                case 1:
-                    
-                    string btctoast =Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(0)));
-                    Toast.MakeText(this, btctoast, ToastLength.Long).Show();
-                    currentprice.Text = Core.Program.tacker(0);
-                    marginview.Text = btctoast;
-                    break;
-                case 2:
-                    string bchtoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(1)));
-                    Toast.MakeText(this, bchtoast, ToastLength.Long).Show();
-                    currentprice.Text = Core.Program.tacker(1);
-                    marginview.Text = bchtoast;
-                    break;
-                case 3:
-                    string ltctoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(2)));
-                     Toast.MakeText(this, ltctoast, ToastLength.Long).Show();
-                    currentprice.Text = Core.Program.tacker(2);
-                    marginview.Text = ltctoast;
 
-                    break;
-                case 4:
-                    string dashtoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(3)));
-                     Toast.MakeText(this, dashtoast, ToastLength.Long).Show();
-                    currentprice.Text = Core.Program.tacker(3);
-                    marginview.Text = dashtoast;
-                    break;
-            }
-
-        }
-
-
-
-
+                string btcreturn = Core.Program.tacker(1);
+                btc.Text = btcreturn;
+                string bchreturn = Core.Program.tacker(2);
+                bch.Text = bchreturn;
+                string ltcreturn = Core.Program.tacker(3);
+                ltc.Text = ltcreturn;
+                string dashreturn = Core.Program.tacker(4);
+                dash.Text = dashreturn;
+            };
+       }
+        p
     }
 }
 
