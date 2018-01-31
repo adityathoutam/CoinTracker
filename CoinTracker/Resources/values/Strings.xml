@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">CoinTracker</string>
-  <string name="coin_prompt">Choose a coin</string>
-  <string-array name="coin_array">
+  <string name="currency_prompt">Choose a Currency</string>
+  <string-array name="Currency_Array">
+    <item>Select</item>
     <item>Bitcoin</item>
-    <item>Bitcoin Cash</item>
-    <item>Litecoin</item>
+    <item>BitcoinCash</item>
+    <item>LiteCoin</item>
     <item>Dash</item>
   </string-array>
-
 </resources>

@@ -4,12 +4,13 @@ using System.Text;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Globalization;
 using Newtonsoft.Json;
 
 namespace Core
 {
 
-    public class Welcome
+    public class StringConv
     {
         [JsonProperty("BTC-INR")]
         public Inr BTC { get; set; }
@@ -36,26 +37,26 @@ namespace Core
     }
     class Program
     {
-
+        
         public static string tacker(int i)
         {
-            var currencyRates = _download_serialized_json_data<Welcome>();
+            var currencyRates = _download_serialized_json_data<StringConv>();
             switch (i)
             {
-                case 1:
+                case 0:
                     string BTC = currencyRates.BTC.LowestAsk;
                     return BTC;
                    
 
-                case 2:
+                case 1:
                     string BCH = currencyRates.BCH.LowestAsk;
                     return BCH;
 
-                case 3:
+                case 2:
                     string LTC = currencyRates.LTC.LowestAsk;
                     return LTC;
 
-                case 4:
+                case 3:
                     string DASH = currencyRates.DASH.LowestAsk;
                     return DASH;
 
@@ -65,6 +66,20 @@ namespace Core
 
         }
 
+      
+        public static float margin(string Bquantity, string Bprice, string CurrentPrice)
+        {
+            float FloatBprice = float.Parse(Bprice, CultureInfo.InvariantCulture.NumberFormat);
+            float FloatBquantity = float.Parse(Bquantity, CultureInfo.InvariantCulture.NumberFormat);
+            float FloatCurrentPrice = float.Parse(CurrentPrice, CultureInfo.InvariantCulture.NumberFormat);
+            float FloatBoughtPrice = FloatBprice / FloatBquantity;
+
+
+           
+            float Margin = (FloatCurrentPrice - FloatBoughtPrice) * FloatBquantity;
+
+            return Margin ;
+        }
         
 
         public static T _download_serialized_json_data<T>() where T : new()
