@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 using Newtonsoft.Json;
 
-namespace Core
+namespace CoinTracker
 {
 
     public class StringConv
