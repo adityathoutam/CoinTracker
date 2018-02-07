@@ -40,28 +40,28 @@ namespace CoinTracker
             {
                 case 1:
                     
-                    string btctoast =Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(0)));
+                    string btctoast =Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tracker(0)));
                     Toast.MakeText(this, btctoast, ToastLength.Long).Show();
-                    currentprice.Text = Core.Program.tacker(0);
+                    currentprice.Text = Core.Program.tracker(0);
                     marginview.Text = btctoast;
                     break;
                 case 2:
-                    string bchtoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(1)));
+                    string bchtoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tracker(1)));
                     Toast.MakeText(this, bchtoast, ToastLength.Long).Show();
-                    currentprice.Text = Core.Program.tacker(1);
+                    currentprice.Text = Core.Program.tracker(1);
                     marginview.Text = bchtoast;
                     break;
                 case 3:
-                    string ltctoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(2)));
+                    string ltctoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tracker(2)));
                      Toast.MakeText(this, ltctoast, ToastLength.Long).Show();
-                    currentprice.Text = Core.Program.tacker(2);
+                    currentprice.Text = Core.Program.tracker(2);
                     marginview.Text = ltctoast;
 
                     break;
                 case 4:
-                    string dashtoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tacker(3)));
+                    string dashtoast = Convert.ToString(Core.Program.margin(quantity.Text, price.Text, Core.Program.tracker(3)));
                      Toast.MakeText(this, dashtoast, ToastLength.Long).Show();
-                    currentprice.Text = Core.Program.tacker(3);
+                    currentprice.Text = Core.Program.tracker(3);
                     marginview.Text = dashtoast;
                     break;
             }

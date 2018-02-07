@@ -38,7 +38,7 @@ namespace Core
     class Program
     {
         
-        public static string tacker(int i)
+        public static string tracker(int i)
         {
             var currencyRates = _download_serialized_json_data<StringConv>();
             switch (i)
