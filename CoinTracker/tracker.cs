@@ -38,26 +38,38 @@ namespace CoinTracker
     class Program
     {
         
-        public static string tracker(int i)
+        public static string tracker(int i,bool High)
         {
             var currencyRates = _download_serialized_json_data<StringConv>();
             switch (i)
             {
                 case 0:
-                    string BTC = currencyRates.BTC.LowestAsk;
-                    return BTC;
+                    string BTC;
+                    if (High == false)
+                        BTC = currencyRates.BTC.LowestAsk;
+                   else BTC =currencyRates.BTC.HighestBid;
+                        return BTC;
                    
 
                 case 1:
-                    string BCH = currencyRates.BCH.LowestAsk;
-                    return BCH;
+                    string BCH;
+                    if (High == false)
+                         BCH = currencyRates.BCH.LowestAsk;
+                    else BCH = currencyRates.BCH.HighestBid;
+                        return BCH;
 
                 case 2:
-                    string LTC = currencyRates.LTC.LowestAsk;
+                    string LTC;
+                    if (High == false)
+                         LTC = currencyRates.LTC.LowestAsk;
+                    else LTC = currencyRates.LTC.HighestBid;
                     return LTC;
 
                 case 3:
-                    string DASH = currencyRates.DASH.LowestAsk;
+                    string DASH;
+                    if (High == false)
+                        DASH = currencyRates.DASH.LowestAsk;
+                    else DASH = currencyRates.DASH.HighestBid;
                     return DASH;
 
                 default:
@@ -81,7 +93,6 @@ namespace CoinTracker
             return Margin ;
         }
         
-
         public static T _download_serialized_json_data<T>() where T : new()
         {
             using (var w = new WebClient())

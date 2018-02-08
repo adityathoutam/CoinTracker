@@ -16,10 +16,13 @@ namespace CoinTracker
     public class BuyRatesFragment :Fragment
     {
         private int position;
-        TextView currentprice;
+        public int pos;
+        
         EditText quantity;
         EditText price;
         TextView marginview;
+        Button getMargin;
+        Spinner spinner;
         public static BuyRatesFragment NewInstance(int position)
         {
             var f = new BuyRatesFragment();
@@ -39,13 +42,16 @@ namespace CoinTracker
         {
             var root = inflater.Inflate(Resource.Layout.BuyRatesFragment, container, false);
 
-            Spinner spinner = root.FindViewById<Spinner>(Resource.Id.spinner1);
+            spinner = root.FindViewById<Spinner>(Resource.Id.spinner1);
             spinner.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
-
-            currentprice = root.FindViewById<TextView>(Resource.Id.currentprice);
             quantity = root.FindViewById<EditText>(Resource.Id.quantity);
             price = root.FindViewById<EditText>(Resource.Id.price);
             marginview = root.FindViewById<TextView>(Resource.Id.marginview);
+            getMargin = root.FindViewById<Button>(Resource.Id.getmarginButton);
+
+            getMargin.Click += (object spinner, EventArgs e) => {
+                getMarginClicked(spinner, e);
+            };
 
             var adapter = ArrayAdapter.CreateFromResource( container.Context, Resource.Array.Currency_Array, Android.Resource.Layout.SimpleSpinnerItem);
 
@@ -54,40 +60,33 @@ namespace CoinTracker
             return root;
 
         }
-       
-      
+
         private void spinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
-            Spinner spinner = (Spinner)sender;
+
+            pos= (e.Position);
+        }
+
+        private void getMarginClicked(Object sender, EventArgs e)
+        {
            
-
-
-            switch (spinner.GetItemIdAtPosition(e.Position))
+            switch (pos)
 
             {
                 case 1:
-                    
-                    string btctoast =Convert.ToString(CoinTracker.Program.margin(quantity.Text, price.Text, CoinTracker.Program.tracker(0)));
-                    
-                    currentprice.Text = CoinTracker.Program.tracker(0);
+                    string btctoast =Convert.ToString(CoinTracker.Program.margin(quantity.Text, price.Text, CoinTracker.Program.tracker(0,false)));
                     marginview.Text = btctoast;
                     break;
                 case 2:
-                    string bchtoast = Convert.ToString(CoinTracker.Program.margin(quantity.Text, price.Text, CoinTracker.Program.tracker(1)));
-                    
-                    currentprice.Text = CoinTracker.Program.tracker(1);
+                    string bchtoast = Convert.ToString(CoinTracker.Program.margin(quantity.Text, price.Text, CoinTracker.Program.tracker(1,false)));
                     marginview.Text = bchtoast;
                     break;
                 case 3:
-                    string ltctoast = Convert.ToString(CoinTracker.Program.margin(quantity.Text, price.Text, CoinTracker.Program.tracker(2)));
-                    
-                    currentprice.Text = CoinTracker.Program.tracker(2);
+                    string ltctoast = Convert.ToString(CoinTracker.Program.margin(quantity.Text, price.Text, CoinTracker.Program.tracker(2,false)));
                     marginview.Text = ltctoast;
-
                     break;
                 case 4:
-                    string dashtoast = Convert.ToString(CoinTracker.Program.margin(quantity.Text, price.Text, CoinTracker.Program.tracker(3)));
-                    currentprice.Text = CoinTracker.Program.tracker(3);
+                    string dashtoast = Convert.ToString(CoinTracker.Program.margin(quantity.Text, price.Text, CoinTracker.Program.tracker(3,false)));
                     marginview.Text = dashtoast;
                     break;
             }

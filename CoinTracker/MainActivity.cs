@@ -58,7 +58,12 @@ namespace CoinTracker
 
             public override Android.Support.V4.App.Fragment GetItem(int position)
             {
-                return BuyRatesFragment.NewInstance(0);
+                if(position==0)
+
+                return MarketRatesFragment.NewInstance(0);
+                if (position == 1)
+                    return BuyRatesFragment.NewInstance(0);
+                else return BuyRatesFragment.NewInstance(0);
 
 
             }
